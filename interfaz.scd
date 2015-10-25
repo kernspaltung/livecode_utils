@@ -1,10 +1,13 @@
 (
 
+// join existing mandelhub?
 j = false;
 
-"init.scd".resolveRelative.load;
+"setup/boot.scd".resolveRelative.load;
 
 )
+
+
 
 // interfaz:
 x[\freq_1]=180;
