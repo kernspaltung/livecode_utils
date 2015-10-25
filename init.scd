@@ -25,34 +25,26 @@ r.sendAll = {|r ... args|
 };
 
 
-m = MandelHub.start("furenku");
+	if( j, {
+
+		MandelHub.join( "furenku",
+			action: {
+				m = MandelHub.instance
+			}
+		);
+
+	},{
+
+		m = MandelHub.start("furenku");
+
+	});
 
 
-/*
-
-if there's a mandelhub active, join it:
-
-MandelHub.join( "furenku",
-	action: {
-		m = MandelHub.instance
-	}
-);
-*/
 
 m.gui;
 
 
-
-/*
-m.takeLead;
-m.timer.reset;
-m.changeTempo(126/60,1);
-m.clear;
-m.tools.metro
-m.tools.stopMetro
-*/
-
-m.tools.genres.choose();
+m.tools.genres.choose().postln;
 
 
 
@@ -69,31 +61,8 @@ x=m.space;
 
 p = ProxySpace.push(s);
 
-// sintes:
 
-~x = {|freq_1|
-	(
-		RLPF.ar(
-			WhiteNoise.ar,
-			freq_1,
-			0.01 ) * 5
-
-	).tanh / 3
-
-};
-
-~y = {|freq_2| LFPulse.ar( freq_2 ) * 0.2};
-
-
-
-
-
-
-// arreglo de sintes
-z = [~x,~y];
-// arreglo de params:
-
-k=[\freq_1, \freq_2];
+"synths.scd".resolveRelative.load;
 
 z.collect{ |np| np.play; };
 
@@ -128,15 +97,4 @@ f.value();
 });
 
 )
-
-
-
-
-// interfaz:
-x[\freq_1]=180;
-x[\freq_2]=50;
-
-
-x[k[0]]=80;
-x[k[1]]=100;
 
