@@ -22,14 +22,22 @@ fork{1.do{
 
 
 	"load synths".postln;
-	"../synths.scd".resolveRelative.load;
+	("../"++w++"/synths/*.scd").resolveRelative.pathMatch.collect{|f|
+		f.load;
+	};
 
 	2.wait;
 
 	"mapHub2Synths".postln;
 	"mapHub2Synths.scd".resolveRelative.load;
 
-	1.wait;
-	"done".postln;
+	2.wait;
+
+	( "load patch :" ++ w ).postln;
+
+	q = ("../"++w++"/"++w++".scd");
+	q.resolveRelative.load;
+
+	"Done.".postln;
 
 }}

@@ -1,3 +1,5 @@
+"load test synths".postln;
+
 
 // sintes:
 
@@ -10,7 +12,7 @@
 
 	! 1
 
-	).tanh / 3
+	).tanh / 6
 
 };
 
